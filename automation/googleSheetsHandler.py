@@ -23,7 +23,7 @@ class googleSheetsHandler:
             self.creds = Credentials.from_authorized_user_file("token.json", self.SCOPES)
         # If there are no (valid) credentials available, let the user log in.
         if not self.creds or not self.creds.valid:
-            if self.creds and self.creds.expired and creds.refresh_token:
+            if self.creds and self.creds.expired and self.creds.refresh_token:
                 self.creds.refresh(Request())
             else:
                 flow = InstalledAppFlow.from_client_secrets_file(
@@ -52,7 +52,7 @@ class googleSheetsHandler:
         except HttpError as err:
             print(err)
 
-    def uploadItems(self, rows):
+    def editTems(self, rows):
         try:
             service = build("sheets", "v4", credentials=self.creds)
 
@@ -75,5 +75,34 @@ class googleSheetsHandler:
             )
 
             print("Rows Updated: ", result['updates']['updatedRows'])
+        except HttpError as err:
+            print(err)
+            
+    def insertRows(self, rows):
+        try:
+            service = build("sheets", "v4", credentials=self.creds)
+
+            # Call the Sheets API
+            sheet = service.spreadsheets()
+
+            #!!!! SHEETS OPERATIONS HERE!!!!
+            values = []
+            values.append(rows)
+            body = {'values': rows}
+
+            # Build the service
+            service = build('sheets', 'v4', credentials=self.creds)
+
+            # Use the Sheets API to append the data
+            request = service.spreadsheets().values().append(
+                spreadsheetId=self.SPREADSHEET_ID,
+                range=self.RANGE_NAME,
+                valueInputOption='RAW',  # Options: 'RAW' or 'USER_ENTERED'
+                insertDataOption='INSERT_ROWS',  # To append data
+                body=body
+            )
+            response = request.execute()
+
+            print("Rows Updated: ", response)
         except HttpError as err:
             print(err)

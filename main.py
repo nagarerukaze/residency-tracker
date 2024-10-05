@@ -1,7 +1,7 @@
 from automation.googleSheetsHandler import googleSheetsHandler
 import sqlite3
 
-googleSheets = googleSheetsHandler("1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms", "Class Data!A2:E")
+googleSheets = googleSheetsHandler("1heMguJXNc2EZncSO7rhVwlQz78iqF54K7", "Logs!A2:D")
 
 connection = sqlite3.connect("rehearsal-hall.db")
 cursor = connection.cursor()
@@ -19,4 +19,6 @@ if rows == None:
     pass
 else:
     print(rows)
+    
+    googleSheetsHandler.insertRows(rows)
     pass # call google sheets api and upload to google sheets
