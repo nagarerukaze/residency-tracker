@@ -9,11 +9,13 @@ cursor = connection.cursor()
 currentTime = None # get time format from aero
 
 cursor.execute("""SELECT * 
-                    FROM time_logs """)
+                    FROM time_logs""")
 
 # WHERE julianday(time_in) is julianday(DATETIME('now', 'localtime'))
 
 rows = cursor.fetchmany()
+
+print(rows)
 
 if rows == None:
     pass
