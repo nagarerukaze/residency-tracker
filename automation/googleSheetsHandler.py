@@ -7,13 +7,13 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
 class googleSheetsHandler:
-    def __init__(self):
+    def __init__(self, spreadsheet_id, range_name):
         # If modifying these scopes, delete the file token.json.
-        self.SCOPES = [""]
+        self.SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly"]
 
         # The ID and range of a sample spreadsheet.
-        self.SPREADSHEET_ID = ""
-        self.RANGE_NAME = ""
+        self.SPREADSHEET_ID = spreadsheet_id
+        self.RANGE_NAME = range_name
         
         self.creds = None
         # The file token.json stores the user's access and refresh tokens, and is
