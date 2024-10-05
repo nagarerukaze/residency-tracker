@@ -13,7 +13,7 @@ cursor.execute("""SELECT *
 
 # WHERE julianday(time_in) is julianday(DATETIME('now', 'localtime'))
 
-rows = cursor.fetchmany()
+rows = cursor.fetchall()
 
 print(rows)
 
