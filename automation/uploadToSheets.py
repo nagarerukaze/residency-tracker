@@ -10,7 +10,8 @@ currentTime = None # get time format from aero
 
 cursor.execute("""SELECT * 
                     FROM time_logs 
-                    WHERE DATE(time_in) is DATE('now', 'localtime')""")
+                    WHERE DATE(time_in) is DATE('now', 'localtime')
+                    AND duration_minutes IS NOT NULL""")
 
 
 rows = cursor.fetchall()
