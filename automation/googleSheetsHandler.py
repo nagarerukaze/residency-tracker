@@ -9,7 +9,7 @@ from googleapiclient.errors import HttpError
 class googleSheetsHandler:
     def __init__(self, spreadsheet_id, range_name):
         # If modifying these scopes, delete the file token.json.
-        self.SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly"]
+        self.SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 
         # The ID and range of a sample spreadsheet.
         self.SPREADSHEET_ID = spreadsheet_id
