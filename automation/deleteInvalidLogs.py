@@ -6,7 +6,7 @@ cursor = connection.cursor()
 
 # Execute DELETE query where the date of `time_in` is the current date
 cursor.execute("""DELETE FROM time_logs 
-                  WHERE duration_minutes = 0""")
+                  WHERE duration_minutes = NULL""")
 
 # Commit the changes to the database
 connection.commit()
