@@ -9,12 +9,12 @@ cursor = connection.cursor()
 currentTime = None # get time format from aero
 
 cursor.execute("""SELECT * 
-                    FROM time_logs WHERE DATE(time_in) is DATE('now', 'localtime')""")
+                    FROM time_logs 
+                    WHERE DATE(time_in) is DATE('now', 'localtime')
+                    AND duration_minutes IS NOT NULL""")
 
 
 rows = cursor.fetchall()
-
-print(rows)
 
 if rows == None:
     pass
