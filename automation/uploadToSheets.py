@@ -5,9 +5,9 @@ import configparser
 config = configparser.ConfigParser()
 config.read('./config.ini')
 
-googleSheets = googleSheetsHandler(config['SHEETS']['id'], config['SHEETS']['range'])
+googleSheets = googleSheetsHandler(config.get("SHEETS", "id"), config.get("SHEETS", "range"))
 
-connection = sqlite3.connect(config['DATABASE']['path'])
+connection = sqlite3.connect(config.get("DATABASE", "path"))
 cursor = connection.cursor()
 
 currentTime = None # get time format from aero

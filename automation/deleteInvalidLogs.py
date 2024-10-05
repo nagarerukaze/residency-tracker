@@ -5,7 +5,7 @@ config = configparser.ConfigParser()
 config.read('./config.ini')
 
 # Connect to the SQLite database
-connection = sqlite3.connect(config['DATABASE']['path'])
+connection = sqlite3.connect(config.get("DATABASE", "path"))
 cursor = connection.cursor()
 
 # Execute DELETE query where the date of `time_in` is the current date
