@@ -8,7 +8,7 @@ cursor = connection.cursor()
 
 cursor.execute("""DELETE FROM time_logs 
                   WHERE duration_minutes is NULL
-                  AND duration_minutes = 0""")
+                  OR duration_minutes = 0""")
 
 # Commit the changes to the database
 connection.commit()
