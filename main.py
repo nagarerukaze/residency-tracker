@@ -1,7 +1,7 @@
 from automation.googleSheetsHandler import googleSheetsHandler
 import sqlite3
 
-googleSheets = googleSheetsHandler("1heMguJXNc2EZncSO7rhVwlQz78iqF54K7", "Logs!A2:D")
+googleSheets = googleSheetsHandler("1heMguJXNc2EZncSO7rhVwlQz78iqF54K7-XiYL62I-4", "Logs!A2:D")
 
 connection = sqlite3.connect("rehearsal-hall.db")
 cursor = connection.cursor()
