@@ -20,5 +20,5 @@ if rows == None:
 else:
     print(rows)
     
-    googleSheetsHandler.insertRows(rows)
+    googleSheetsHandler.insertRows(googleSheets, rows)
     pass # call google sheets api and upload to google sheets
