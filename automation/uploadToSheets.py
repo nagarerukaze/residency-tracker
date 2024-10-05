@@ -1,4 +1,4 @@
-from automation.googleSheetsHandler import googleSheetsHandler
+from googleSheetsHandler import googleSheetsHandler
 import sqlite3
 
 googleSheets = googleSheetsHandler("1heMguJXNc2EZncSO7rhVwlQz78iqF54K7-XiYL62I-4", "Logs!A2:D")
