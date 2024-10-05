@@ -3,7 +3,7 @@ import sqlite3
 import configparser
 
 config = configparser.ConfigParser()
-config.read('config.ini')
+config.read('./config.ini')
 
 googleSheets = googleSheetsHandler(config['SHEETS']['id'], config['SHEETS']['range'])
 

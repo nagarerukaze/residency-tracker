@@ -2,7 +2,7 @@ import sqlite3
 import configparser
 
 config = configparser.ConfigParser()
-config.read('config.ini')
+config.read('./config.ini')
 
 # Connect to the SQLite database
 connection = sqlite3.connect(config['DATABASE']['path'])
