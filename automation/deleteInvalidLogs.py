@@ -1,7 +1,11 @@
 import sqlite3
+import configparser
+
+config = configparser.ConfigParser()
+config.read('config.ini')
 
 # Connect to the SQLite database
-connection = sqlite3.connect("rehearsal-hall.db")
+connection = sqlite3.connect(config['DATABASE']['path'])
 cursor = connection.cursor()
 
 # Execute DELETE query where the date of `time_in` is the current date

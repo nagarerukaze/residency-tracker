@@ -1,9 +1,13 @@
 from googleSheetsHandler import googleSheetsHandler
 import sqlite3
+import configparser
 
-googleSheets = googleSheetsHandler("1heMguJXNc2EZncSO7rhVwlQz78iqF54K7-XiYL62I-4", "Logs!A2:D")
+config = configparser.ConfigParser()
+config.read('config.ini')
 
-connection = sqlite3.connect("rehearsal-hall.db")
+googleSheets = googleSheetsHandler(config['SHEETS']['id'], config['SHEETS']['range'])
+
+connection = sqlite3.connect(config['DATABASE']['path'])
 cursor = connection.cursor()
 
 currentTime = None # get time format from aero
@@ -11,8 +15,9 @@ currentTime = None # get time format from aero
 cursor.execute("""SELECT * 
                     FROM time_logs 
                     WHERE DATE(time_in) is DATE('now', 'localtime')
-                    AND duration_minutes IS NOT NULL""")
+                    """)
 
+# AND duration_minutes IS NOT NULL
 
 rows = cursor.fetchall()
 
@@ -20,6 +25,5 @@ if rows == None:
     pass
 else:
     print(rows)
-    
     googleSheetsHandler.insertRows(googleSheets, rows)
-    pass # call google sheets api and upload to google sheets
+    pass
