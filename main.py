@@ -9,7 +9,7 @@ cursor = connection.cursor()
 currentTime = None # get time format from aero
 
 cursor.execute("""SELECT * 
-                    FROM time_logs WHERE julianday(time_in) is julianday(DATETIME('now', 'localtime'))""")
+                    FROM time_logs WHERE DATE(time_in) is DATE('now', 'localtime')""")
 
 
 rows = cursor.fetchall()
